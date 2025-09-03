@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mercyhurst KNN Regression (Front-end)</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Mercyhurst — KNN Regression (shots → goals)</h1>
+
+      <section id="controls">
+        <label>Season
+          <select id="seasonSelect">
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+          </select>
+        </label>
+
+        <label>Expected shots
+          <input id="shotsInput" type="number" min="0" step="1" value="10" />
+        </label>
+
+        <label>k
+          <select id="kSelect"></select>
+        </label>
+      </section>
+
+      <section id="summary">
+        Predicted goals: <strong id="predValue">—</strong>
+      </section>
+
+      <section id="chartArea">
+        <svg id="chart" width="800" height="500" aria-label="shots vs goals scatter"></svg>
+        <div id="tooltip" class="hidden"></div>
+      </section>
+
+      <section id="description" style="margin-top:18px; font-size:1.05em; color:#333; max-width:700px;">
+        <strong>About this app:</strong><br>
+        This interactive tool visualizes Mercyhurst lacrosse player data for the selected season. Each point represents a player (x = shots taken, y = goals scored).<br>
+        Enter the number of shots you expect to take and choose <em>k</em> to see a k-nearest neighbor regression prediction for goals scored, based on the most similar players. Orange points are the <em>k</em> closest players (by shots), and the red point shows your predicted goals. Hover any point for details.
+      </section>
+      <footer>
+        <small>Data source: <code>mercyhurst_lacrosse.csv</code> (loaded locally)</small>
+      </footer>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
